@@ -5,14 +5,20 @@
     max-width: 440px;
 }
 #display{
-    min-height: 5rem;
-    text-align: right;
+    min-height: 4rem;
 }
 #process{
-    color: #636363;
+    background-color: inherit;
+    text-align: right;
 }
 #output{
-    font-size: 3rem;
+    text-align: right;
+    max-width: 430px;
+    background-color: inherit;
+    outline: none;
+    border: none;
+    font-size: 2.3rem;
+    font-weight: bold;
 }
 button{
     border: none;
@@ -41,6 +47,16 @@ button{
     padding: 5px 0;
     background-color: inherit;
 }
+#functions3{
+    text-align: left;
+    display: flex;
+}
+.dropdown{
+    background-color: #f0eded;
+}
+.dropdown-toggle:focus{
+    border: none !important;
+}
 #keys{
     display: grid;
     grid-template-columns: auto auto auto auto auto;
@@ -57,9 +73,12 @@ button{
     font-weight: bold;
     font-size: 20px;
 }
+.equal{
+    background-color: #98b5e3
+}
 button:active{
-    background-color: white;
+    background-color: #98b5e3;
 }
 .number:active{
-    background-color: #f5f5f5;
+    background-color: #98b5e3;
 }
