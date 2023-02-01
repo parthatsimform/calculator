@@ -93,7 +93,10 @@ Array.from(btns).forEach(btn => {
             case "2raiseTo":
                 if (output.value === "0") {
                     output.value = "2**";
-                } else {
+                } else if (output.value.toString().slice(-1) === "+" || output.value.toString().slice(-1) === "-" || output.value.toString().slice(-1) === "*" || output.value.toString().slice(-1) === "/") {
+                    output.value += "2**";
+                }
+                else {
                     output.value += "*2**";
                 }
                 break;
@@ -101,6 +104,8 @@ Array.from(btns).forEach(btn => {
             case "3raiseTo":
                 if (output.value === "0") {
                     output.value = "3**";
+                }else if (output.value.toString().slice(-1) === "+" || output.value.toString().slice(-1) === "-" || output.value.toString().slice(-1) === "*" || output.value.toString().slice(-1) === "/") {
+                    output.value += "3**";
                 } else {
                     output.value += "*3**";
                 }
@@ -132,6 +137,8 @@ Array.from(btns).forEach(btn => {
             case "pi":
                 if (output.value == 0) {
                     output.value = 3.14159265359;
+                }else if (output.value.toString().slice(-1) === "+" || output.value.toString().slice(-1) === "-" || output.value.toString().slice(-1) === "*" || output.value.toString().slice(-1) === "/") {
+                    output.value += 3.14159265359;
                 } else {
                     output.value += "*3.14159265359";
                 }
@@ -140,6 +147,8 @@ Array.from(btns).forEach(btn => {
             case "e":
                 if (output.value == 0) {
                     output.value = 2.718;
+                }else if (output.value.toString().slice(-1) === "+" || output.value.toString().slice(-1) === "-" || output.value.toString().slice(-1) === "*" || output.value.toString().slice(-1) === "/") {
+                    output.value += 2.718;
                 } else {
                     output.value += "*2.718";
                 }
@@ -163,6 +172,8 @@ Array.from(btns).forEach(btn => {
             case "exp":
                 if (output.value === "0") {
                     output.value = "e**";
+                }else if (output.value.toString().slice(-1) === "+" || output.value.toString().slice(-1) === "-" || output.value.toString().slice(-1) === "*" || output.value.toString().slice(-1) === "/") {
+                    output.value += "e**";
                 } else {
                     output.value += "*e**";
                 }
@@ -196,6 +207,8 @@ Array.from(btns).forEach(btn => {
             case "tenRaiseTo":
                 if (output.value === "0") {
                     output.value = "10**";
+                }else if (output.value.toString().slice(-1) === "+" || output.value.toString().slice(-1) === "-" || output.value.toString().slice(-1) === "*" || output.value.toString().slice(-1) === "/") {
+                    output.value += "10**";
                 } else {
                     output.value += "*10**";
                 }
@@ -227,9 +240,13 @@ Array.from(btns).forEach(btn => {
                 } else if (output.value.toString().includes("√")) {
                     op = output.value.toString().split("√")[1];
                     output.value = Math.sqrt(Function("return "+op)());
-                } else {
+                } else if (output.value.toString().includes("e**")) {
                     const res = output.value.toString().replace(/e/g, "2.718");
                     output.value = Function("return " + res)();
+                }
+                else{
+                    process.innerHTML = output.value;
+                    output.value = eval(output.value);
                 }
                 break;
             
