@@ -21,8 +21,8 @@
                 <button class="fun1" value="fe">F-E</button>
             </div>
             <div id="functions2">
-                <button class="fun2" id="mc" value="mc">MC</button>
-                <button class="fun2" id="mr" value="mr">MR</button>
+                <button class="fun2" id="mc" value="mc" disabled>MC</button>
+                <button class="fun2" id="mr" value="mr" disabled>MR</button>
                 <button class="fun2" id="m+" value="m+">M+</button>
                 <button class="fun2" id="m-" value="m-">M-</button>
                 <button class="fun2" id="ms" value="ms">MS</button>
@@ -30,7 +30,7 @@
             <div id="functions3">
                 <div class="dropdown">
                     <button class="btn dropdown-toggle" value="trigonometry" data-bs-toggle="dropdown">
-                      Trigonometry
+                        <img src="https://img.icons8.com/ios/16/null/trigonometry.png"/> Trigonometry
                     </button>
                     <ul class="dropdown-menu">
                       <li><button class="dropdown-item" value="sin">Sin</button></li>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="dropdown">
                     <button class="btn dropdown-toggle" value="function" data-bs-toggle="dropdown">
-                        Function
+                        <img src="https://img.icons8.com/small/20/null/frequency-f.png"/> Function
                     </button>
                     <ul class="dropdown-menu">
                       <li><button class="dropdown-item" value="ceiling">⌈x⌉</button></li>
@@ -50,7 +50,13 @@
                 </div> 
             </div>
             <div id="keys">
-                <button class="key" value="2nd">2<sup>nd</sup></button>
+                <button class="btn dropdown dropdown-toggle" value="2nd" data-bs-toggle="dropdown">2<sup>nd</sup></button>
+                <ul class="dropdown-menu">
+                    <li><button class="dropdown-item" value="2raiseTo">2<sup>x</sup></button></li>
+                    <li><button class="dropdown-item" value="3raiseTo">3<sup>x</sup></button></li>
+                    <li><button class="dropdown-item" value="cubeRoot"><sup>3</sup>√x</button></li>
+                    <li><button class="dropdown-item" value="cube">x<sup>3</sup></button></li>
+                </ul>
                 <button class="key" value="pi">π</button>
                 <button class="key" value="e">e</button>
                 <button class="key" value="clear">C</button>

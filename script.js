@@ -29,27 +29,26 @@ Array.from(btns).forEach(btn => {
 
             case "mc":
                 memory = 0;
-                console.log("M:", memory);
+                mc.disabled = true;
+                mr.disabled = true;
                 break;
             
             case "mr":
                 output.value = memory;
-                console.log("M:", memory);
                 break;
             
             case "m+":
                 memory += parseFloat(output.value);
-                console.log("M:", memory);
                 break;
             
             case "m-":
                 memory -= parseFloat(output.value);
-                console.log("M:", memory);
                 break;
             
             case "ms":
                 memory = parseFloat(output.value);
-                console.log("M:", memory);
+                mc.disabled = false;
+                mr.disabled = false;
                 break;
             
             case "trigonometry":
@@ -90,6 +89,35 @@ Array.from(btns).forEach(btn => {
             
             case "2nd":
                 break;
+            
+            case "2raiseTo":
+                if (output.value === "0") {
+                    output.value = "2**";
+                } else {
+                    output.value += "*2**";
+                }
+                break;
+            
+            case "3raiseTo":
+                if (output.value === "0") {
+                    output.value = "3**";
+                } else {
+                    output.value += "*3**";
+                }
+                break;
+            
+            case "cubeRoot":
+                if (output.value === "0") {
+                    output.value = "3√";
+                } else {
+                    output.value += "3√";
+                }
+                break;
+            
+            case "cube":
+                process.innerHTML = output.value + "<sup>3</sup>";
+                output.value = Math.pow(output.value,3);
+                break;
                 
             case "clear":
                 process.innerHTML = "";
@@ -103,16 +131,18 @@ Array.from(btns).forEach(btn => {
             
             case "pi":
                 if (output.value == 0) {
-                    output.value = "";
+                    output.value = 3.14159265359;
+                } else {
+                    output.value += "*3.14159265359";
                 }
-                output.value += 3.14159265359;
                 break;
             
             case "e":
                 if (output.value == 0) {
-                    output.value = "";
+                    output.value = 2.718;
+                } else {
+                    output.value += "*2.718";
                 }
-                output.value += 2.718;
                 break;
             
             case "square":
@@ -134,7 +164,7 @@ Array.from(btns).forEach(btn => {
                 if (output.value === "0") {
                     output.value = "e**";
                 } else {
-                    output.value += "e**";
+                    output.value += "*e**";
                 }
                 break;
             
@@ -167,7 +197,7 @@ Array.from(btns).forEach(btn => {
                 if (output.value === "0") {
                     output.value = "10**";
                 } else {
-                    output.value += "10**";
+                    output.value += "*10**";
                 }
                 break;
             
@@ -191,14 +221,13 @@ Array.from(btns).forEach(btn => {
                     op1 = output.value.toString().split(" mod ")[0];
                     op2 = output.value.toString().split(" mod ")[1];
                     output.value = op1 % op2;
+                } else if (output.value.toString().includes("3√")) {
+                    op = output.value.toString().split("√")[1];
+                    output.value = Math.cbrt(Function("return "+op)());
                 } else if (output.value.toString().includes("√")) {
                     op = output.value.toString().split("√")[1];
                     output.value = Math.sqrt(Function("return "+op)());
-                } else if (output.value.toString().includes("e")) {
-                    process.innerHTML = output.value;
-                    output.value = eval(output.value);
-                }
-                else {
+                } else {
                     const res = output.value.toString().replace(/e/g, "2.718");
                     output.value = Function("return " + res)();
                 }
